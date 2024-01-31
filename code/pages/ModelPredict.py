@@ -14,8 +14,8 @@ def LearnWithTeacher(arr):
     if models_type is not None:
         if models_type == "DecisionTreeRegressor":
             st.header("DecisionTreeRegressor")
-            with open('data/model/DecisionTreeRegressor.pkl', 'rb') as file:
-                tree_model = pickle.load(file)
+            with open('data/model/DecisionTreeRegressor.pkl', 'rb') as f:
+                tree_model = pickle.load(f)
             Pred(tree_model, arr)
 
         elif models_type == "PolynomialRegression":
