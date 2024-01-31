@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import xgboost
+from xgboost import XGBRegressor
 import lightgbm
 import pickle
 
@@ -58,7 +58,7 @@ def AdvancedEnsembles(arr):
 
         elif models_type == "XGBoost (eXtreme Gradient Boosting)":
             st.header("XGBRegressor")
-            xgb_model = xgboost.XGBRegressor()
+            xgb_model = XGBRegressor()
             xgb_model.load_model('data/model/XGBRegressor.json')
             Pred(xgb_model, arr)
 
