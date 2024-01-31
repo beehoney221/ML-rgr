@@ -1,9 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from xgboost import XGBRegressor
+import xgboost
 import lightgbm
-import sklearn
 import pickle
 
 def LearnWithTeacher(arr):
@@ -15,14 +14,14 @@ def LearnWithTeacher(arr):
     if models_type is not None:
         if models_type == "DecisionTreeRegressor":
             st.header("DecisionTreeRegressor")
-            with open('../../data/model/DecisionTreeRegressor.pkl', 'rb') as file:
+            with open('data/model/DecisionTreeRegressor.pkl', 'rb') as file:
                 tree_model = pickle.load(file)
             Pred(tree_model, arr)
 
         elif models_type == "PolynomialRegression":
             st.header("PolynomialRegression")
             st.subheader("ElasticNet")
-            with open('../../data/model/PolyRegressionEN.pkl', 'rb') as file:
+            with open('data/model/PolyRegressionEN.pkl', 'rb') as file:
                 poly_model = pickle.load(file)
             Pred(poly_model, arr)
 
@@ -35,13 +34,13 @@ def Ensembles(arr):
     if models_type is not None:
         if models_type == "BaggingRegressor":
             st.header("BaggingRegressor")
-            with open('../../data/model/BaggingRegressor.pkl', 'rb') as file:
+            with open('data/model/BaggingRegressor.pkl', 'rb') as file:
                 bag_model = pickle.load(file)
             Pred(bag_model, arr)
 
         elif models_type == "GradientBoostingRegressor":
             st.header("GradientBoostingRegressor")
-            with open('../../data/model/GradientBoostingRegressor.pkl', 'rb') as file:
+            with open('data/model/GradientBoostingRegressor.pkl', 'rb') as file:
                 grad_model = pickle.load(file)
             Pred(grad_model, arr)
 
@@ -54,13 +53,13 @@ def AdvancedEnsembles(arr):
     if models_type is not None:
         if models_type == "LightGBM (Light Gradient Boosted Machine)":
             st.header("LGBMRegressor")
-            lgbm_model = lightgbm.Booster(model_file = '../../data/model/LGBMRegressor.txt')
+            lgbm_model = lightgbm.Booster(model_file = 'data/model/LGBMRegressor.txt')
             Pred(lgbm_model, arr)
 
         elif models_type == "XGBoost (eXtreme Gradient Boosting)":
             st.header("XGBRegressor")
-            xgb_model = XGBRegressor()
-            xgb_model.load_model('../../data/model/XGBRegressor.json')
+            xgb_model = xgboost.XGBRegressor()
+            xgb_model.load_model('data/model/XGBRegressor.json')
             Pred(xgb_model, arr)
 
 def Pred(model, arr):
