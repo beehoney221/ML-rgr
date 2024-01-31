@@ -40,7 +40,7 @@ def LmlPlot():
     st.pyplot(plt)
 
 
-data = pd.read_csv('../../data/dataset/cars_prepared.csv')
+data = pd.read_csv('data/dataset/cars_prepared.csv')
 data = data.drop(['Unnamed: 0', 'manufacturer_name', 'model_name'], axis=1)
 
 st.title('Визуализация')

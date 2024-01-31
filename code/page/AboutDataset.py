@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 
-data_start = pd.read_csv('../../data/dataset/cars.csv')
-data_prepared = pd.read_csv('../../data/dataset/cars_prepared.csv')
+data_start = pd.read_csv('data/dataset/cars.csv')
+data_prepared = pd.read_csv('data/dataset/cars_prepared.csv')
 data_prepared = data_prepared.drop(["Unnamed: 0"], axis=1)
 
 st.title('О наборе данных')
