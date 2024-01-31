@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 
-img = Image.open("../../data/photo/i.jpg")
+img = Image.open("data/photo/i.jpg")
 
 st.title('Web-приложение для вывода моделей ML и анализа данных')
 
