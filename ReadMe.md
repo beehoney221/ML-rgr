@@ -14,7 +14,7 @@
 6. Предсказания выбранной модели для загруженного датасета
 
 ## Ссылка
-https://chixablox.streamlit.app/
+https://beehoney.streamlit.app/
 
 ## Автор
 Тютюник Мария Сергеевна
