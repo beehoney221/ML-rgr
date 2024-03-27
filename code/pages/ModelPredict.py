@@ -69,6 +69,7 @@ def AdvancedEnsembles(arr):
             Pred(xgb_model, arr)
 
 def DNN(arr):
+
     st.title("Нейронные сети")
 
     st.header("DNN")
@@ -84,7 +85,7 @@ def Pred(model, arr):
         pred_df = pd.DataFrame(data = pred, columns=["price_usd"])
         col1, col2, col3 = st.columns(3)
         with col2:
-            st.write(pred_df)
+            st.write(round(pred_df, 2))
     else:
         if(len(pred) == 1):
             st.write(f"Предсказанная стоимость автомобиля - {round(pred[0], 2)}")
