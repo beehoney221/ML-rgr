@@ -73,7 +73,7 @@ def DNN(arr):
     st.title("Нейронные сети")
 
     st.header("DNN")
-    dnn_model = tf.keras.models.load_model('data/model/DNNRegression')
+    dnn_model = tf.keras.models.load_model('data/model/RegressionModel')
     Pred(dnn_model, arr)
 
 def Pred(model, arr):
