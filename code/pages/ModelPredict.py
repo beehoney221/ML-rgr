@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 import lightgbm
-from keras import load_model
+import tensorflow as tf
 import pickle
 from sklearn.preprocessing import StandardScaler
 
@@ -73,7 +73,7 @@ def DNN(arr):
     st.title("Нейронные сети")
 
     st.header("DNN")
-    dnn_model = load_model('data/model/DNNRegression')
+    dnn_model = tf.keras.models.load_model('data/model/DNNRegression')
     Pred(dnn_model, arr)
 
 def Pred(model, arr):
