@@ -5,7 +5,6 @@ from xgboost import XGBRegressor
 import lightgbm
 import keras
 import pickle
-from sklearn.preprocessing import StandardScaler
 
 
 def LearnWithTeacher(arr):
