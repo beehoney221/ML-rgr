@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 import lightgbm
+from keras import load_model
 import pickle
 from sklearn.preprocessing import StandardScaler
 
@@ -66,6 +67,13 @@ def AdvancedEnsembles(arr):
             xgb_model = XGBRegressor()
             xgb_model.load_model('data/model/XGBRegressor.json')
             Pred(xgb_model, arr)
+
+def DNN(arr):
+    st.title("Нейронные сети")
+
+    st.header("DNN")
+    dnn_model = load_model('data/model/DNNRegression')
+    Pred(dnn_model, arr)
 
 def Pred(model, arr):
 
@@ -186,7 +194,7 @@ def PredictObject():
                     engine_capacity, body_type, has_warranty, state, drivetrain, is_exchangeable, location_region,
                     number_of_photos, up_counter, duration_listed, age]).reshape(1, -1))
 
-        models = ["Обучение с учителем", "Ансамбли", "Продвинутые ансамбли"]
+        models = ["Обучение с учителем", "Ансамбли", "Продвинутые ансамбли", "Нейронные сети"]
 
         models_type = st.selectbox("Тип модели", models)
 
@@ -197,6 +205,8 @@ def PredictObject():
                 Ensembles(arr)    
             elif models_type == "Продвинутые ансамбли":
                 AdvancedEnsembles(arr)
+            elif models_type == "Нейронные сети":
+                DNN(arr)
 
 def PredictDataset():
     
@@ -224,6 +234,8 @@ def PredictDataset():
                     Ensembles(df_sc)    
                 elif models_type == "Продвинутые ансамбли":
                     AdvancedEnsembles(df_sc)
+                elif models_type == "Нейронные сети":
+                    DNN(df_sc)
 
 
 st.title("Работа с моделями регрессии")
