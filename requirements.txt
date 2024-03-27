@@ -7,4 +7,4 @@ scipy
 streamlit
 xgboost
 lightgbm
-tensorflow
+tensorflow==2.16.1

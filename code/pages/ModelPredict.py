@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 import lightgbm
-import tensorflow as tf
+import keras
 import pickle
 from sklearn.preprocessing import StandardScaler
 
@@ -73,7 +73,7 @@ def DNN(arr):
     st.title("Нейронные сети")
 
     st.header("DNN")
-    dnn_model = tf.keras.models.load_model('data/model/RegressionModel')
+    dnn_model = keras.models.load_model('data/model/RegressionDNN.keras')
     Pred(dnn_model, arr)
 
 def Pred(model, arr):
@@ -85,7 +85,7 @@ def Pred(model, arr):
         pred_df = pd.DataFrame(data = pred, columns=["price_usd"])
         col1, col2, col3 = st.columns(3)
         with col2:
-            st.write(round(pred_df, 2))
+            st.write(round(pred_df, 4))
     else:
         if(len(pred) == 1):
             st.write(f"Предсказанная стоимость автомобиля - {round(pred[0], 2)}")
@@ -225,7 +225,7 @@ def PredictDataset():
         check_box = st.checkbox("Выбрать модель")
     
         if check_box:
-            models = ["Обучение с учителем", "Ансамбли", "Продвинутые ансамбли"]
+            models = ["Обучение с учителем", "Ансамбли", "Продвинутые ансамбли", "Нейронные сети"]
             models_type = st.selectbox("Тип модели", models)
 
             if models_type is not None:
@@ -237,6 +237,7 @@ def PredictDataset():
                     AdvancedEnsembles(df_sc)
                 elif models_type == "Нейронные сети":
                     DNN(df_sc)
+
 
 
 st.title("Работа с моделями регрессии")
