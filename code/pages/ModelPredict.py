@@ -87,7 +87,7 @@ def Pred(model, arr):
             st.write(round(pred_df, 4))
     else:
         if(len(pred) == 1):
-            st.write(f"Предсказанная стоимость автомобиля - {round(pred[0], 2)}")
+            st.write(f"Предсказанная стоимость автомобиля - ${round(pred[0], 2)}")
         else:
             st.write(f"Не удалось предсказать")
 
